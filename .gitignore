@@ -40,3 +40,4 @@ Makefile*
 # QtCtreator CMake
 CMakeLists.txt.user
 
+!*Core/Makefile
