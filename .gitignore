@@ -1,5 +1,9 @@
 # C++ objects and libs
 
+*target
+*target/*
+*waifu*
+
 *.slo
 *.lo
 *.o
