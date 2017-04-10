@@ -1,6 +1,6 @@
 # 介绍
 
-我之前写过一个去除黑边的程序，但该程序只能处理边缘处透明度被邻近图块影响的情况，无法处理边缘颜色互相扩散导致的问题。
+我之前写过一个[去除黑边的程序](http://rm.66rpg.com/forum.php?mod=viewthread&tid=397547)，但该程序只能处理边缘处透明度被邻近图块影响的情况，无法处理边缘颜色互相扩散导致的问题。
 
 比如：相邻两个图块，A（左）是白色地砖，B（右）是青石板，用waifu2x放大后，A的右侧一定会变绿，B的左侧一定会变白。
 
@@ -10,9 +10,9 @@
 
 ### 运行环境
 
-1. Qt 5.5 以上
-2. Golang
-3. waifu2x-caffe （需要其中的waifu2x-caffe-cui，运行库，以及models）
+1. [Qt](https://qt.io) 5.5 以上
+2. [Golang](https://golang.org)
+3. [waifu2x-caffe](https://github.com/lltcggie/waifu2x-caffe) （需要其中的waifu2x-caffe-cui，运行库，以及models）
 
 ### 界面
 
@@ -48,5 +48,5 @@ program
 
 ## 功能更新记录
 
-* - [ ] 待更新      添加界面
+* - [x] 2017.04.11 添加界面
 * - [x] 2017.04.09 命令行版本调通

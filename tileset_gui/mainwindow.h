@@ -42,7 +42,9 @@ private slots:
 
     void on_pushButton_Out_Folder_clicked();
 
-    bool on_output();
+    void on_output();
+
+    void on_finished();
 
 private:
     Ui::MainWindow *ui;

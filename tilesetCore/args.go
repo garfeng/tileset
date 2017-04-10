@@ -11,6 +11,7 @@ const (
 	OUTPUT     = "-o"
 	CORE       = "-c"
 	MODIFY_HUI = "-m"
+	XP_RESIZE  = "-xp"
 )
 
 type Args map[string]string
@@ -19,6 +20,7 @@ var (
 	defaultConf = Args{
 		CORE:       "cpu",
 		MODIFY_HUI: "false",
+		XP_RESIZE:  "false",
 	}
 	requireArg = []string{INPUT, OUTPUT}
 )

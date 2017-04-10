@@ -7,7 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     process = new QProcess();
     connect(process,SIGNAL(readyRead()),this,SLOT(on_output()));
+    connect(process,SIGNAL(finished(int)),this,SLOT(on_finished()));
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/new/prefix1/icon1.ico"));
 }
 
 MainWindow::~MainWindow()
@@ -15,8 +17,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_finished(){
+    ui->pushButton_start->setEnabled(true);
+    ui->output->append("处理完毕");
+}
+
 void MainWindow::on_pushButton_start_clicked()
 {
+    ui->pushButton_start->setDisabled(true);
 #ifdef Q_OS_WIN32
     QString cmd = "./tilesetCore.exe";
 #else
@@ -26,19 +34,25 @@ void MainWindow::on_pushButton_start_clicked()
 
     QString input = ui->lineEdit_Origin->text();
     QString output = ui->lineEdit_Out->text();
-
+    QString hue = ui->hue->checkState()?"true":"false";
+    QString xp = ui->checkBox_mvsize->checkState()?"true":"false";
     QStringList params;
 
-    params << useGpu << input << output;
+
+    params << "-c="+useGpu << "-i="+input << "-o="+output << "-m="+hue<<"-xp="+xp;
 
     process->start(cmd,params);
-    ui->pushButton_start->setEnabled(false);
-    process->waitForFinished();
-    ui->pushButton_start->setEnabled(true);
+
+    //process->waitForFinished();
+
+
+
+
+    //ui->pushButton_start->setEnabled(true);
 
 }
 
-bool MainWindow::on_output(){
+void MainWindow::on_output(){
     ui->output->append(process->readAll());
 }
 

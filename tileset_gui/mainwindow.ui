@@ -17,6 +17,27 @@
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>微调饱和度：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QCheckBox" name="hue">
+        <property name="text">
+         <string>请帮我调整（只有在处理xp默认的较灰暗的地图时勾选）</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="4">
+       <widget class="QPushButton" name="pushButton_start">
+        <property name="text">
+         <string>开始处理</string>
+        </property>
+       </widget>
+      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
@@ -24,8 +45,8 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
-       <widget class="QPushButton" name="pushButton_Out_File">
+      <item row="0" column="3">
+       <widget class="QPushButton" name="pushButton_Origin_File">
         <property name="text">
          <string>选择图片</string>
         </property>
@@ -38,8 +59,8 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="pushButton_Origin_File">
+      <item row="2" column="3">
+       <widget class="QPushButton" name="pushButton_Out_File">
         <property name="text">
          <string>选择图片</string>
         </property>
@@ -55,10 +76,10 @@
       <item row="2" column="2">
        <widget class="QLineEdit" name="lineEdit_Out"/>
       </item>
-      <item row="4" column="4">
-       <widget class="QPushButton" name="pushButton_start">
+      <item row="3" column="2">
+       <widget class="QCheckBox" name="checkBox_useGpu">
         <property name="text">
-         <string>开始处理</string>
+         <string>使用GPU（默认不勾选，使用CPU）</string>
         </property>
        </widget>
       </item>
@@ -83,16 +104,23 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
-       <widget class="QCheckBox" name="checkBox_useGpu">
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>使用GPU（默认不勾选，使用CPU）</string>
+         <string>长条转正方形：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QCheckBox" name="checkBox_mvsize">
+        <property name="text">
+         <string>请帮我转换（把xp 256 x height 的图转为 768x768）</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QTextEdit" name="output"/>
     </item>
    </layout>
@@ -103,7 +131,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>28</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="defaultUp">

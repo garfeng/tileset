@@ -44,10 +44,14 @@ func main() {
 	out := args.Get(OUTPUT)
 	c := args.Get(CORE)
 	hue := false
+	xp_resize := false
 	if args.Get(MODIFY_HUI) == "true" {
 		hue = true
 	}
-	tilesetCore(in, out, c, hue)
+	if args.Get(XP_RESIZE) == "true" {
+		xp_resize = true
+	}
+	tilesetCore(in, out, c, hue, xp_resize)
 }
 
 func deleteExt(path string) string {

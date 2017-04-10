@@ -5,6 +5,7 @@
 *waifu*
 tilesetCore/tilesetCore
 tilesetCore/tilesetCore.exe
+test/
 
 *.slo
 *.lo

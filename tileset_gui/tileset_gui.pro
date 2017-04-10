@@ -29,3 +29,10 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    tileset_gui.qrc
+
+DISTFILES += \
+    tileset_gui.rc
+RC_FILE += tileset_gui.rc

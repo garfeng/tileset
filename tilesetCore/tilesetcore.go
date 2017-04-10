@@ -47,14 +47,14 @@ func parseCenter(a, b, x int) int {
 	return x
 }
 
-func tilesetCore(in, out, c string, hue bool) {
+func tilesetCore(in, out, c string, hue, xp bool) {
 	if mfile.IsFile(in) {
 		if mfile.IsDir(out) {
 			_, inName := filepath.Split(in)
 			out = filepath.Join(out, inName)
 		}
 		out = deleteExt(out)
-		err := handleSingleImg(in, out, c, hue)
+		err := handleSingleImg(in, out, c, hue, xp)
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -65,22 +65,29 @@ func tilesetCore(in, out, c string, hue bool) {
 		} else if !mfile.Exist(out) {
 			os.MkdirAll(out, 0755)
 		}
-		handleDirImg(in, out, c, hue)
+		handleDirImg(in, out, c, hue, xp)
+	} else {
+		fmt.Println("It seems that, you input an error path")
 	}
 }
 
-func handleSingleImg(in, out, c string, hue bool) error {
+func handleSingleImg(in, out, c string, hue, xp bool) error {
 	fmt.Println("\n\nHandle", in, "...")
 	img, err := readPng(in)
 	if err != nil {
 		return err
 	}
 	needSplit := isXp(img)
-	if needSplit {
+	if needSplit && xp {
 		imageList := newxpTile(img)
 		fmt.Println("split to", len(imageList), "images")
 		for i, v := range imageList {
-			of := fmt.Sprintf("%s_%d.png", out, i+1)
+			of := ""
+			if len(imageList) == 1 {
+				of = fmt.Sprintf("%s.png", out)
+			} else {
+				of = fmt.Sprintf("%s_%d.png", out, i+1)
+			}
 			err := handleSingleSrc(v, of, c, hue)
 			if err != nil {
 				return err
@@ -122,19 +129,21 @@ func runWaifu2x(in, out string, c string) error {
 		c = "cpu"
 	}
 	cmd := exec.Command("waifu2x-caffe-cui.exe", "-i", in, "-o", out, "-p", c, "-s", "1.5")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 	return cmd.Run()
 }
 
 //handleDirImg(in, out, c, hue)
 
-func handleDirImg(in, out, c string, hue bool) {
+func handleDirImg(in, out, c string, hue, xp bool) {
 	list := mfile.ScanDir(in)
 	for _, file := range list {
 		if isPng(file) {
 			inFile := filepath.Join(in, file)
 			outFile := filepath.Join(out, file)
 			outFile = deleteExt(outFile)
-			err := handleSingleImg(inFile, outFile, c, hue)
+			err := handleSingleImg(inFile, outFile, c, hue, xp)
 			if err != nil {
 				fmt.Println(err)
 			}
