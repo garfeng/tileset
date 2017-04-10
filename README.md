@@ -10,7 +10,7 @@
 
 ### 运行环境
 
-1. [Qt](https://qt.io) 5.5 以上
+1. [Qt](https://www.qt.io) 5.5 以上
 2. [Golang](https://golang.org)
 3. [waifu2x-caffe](https://github.com/lltcggie/waifu2x-caffe) （需要其中的waifu2x-caffe-cui，运行库，以及models）
 4. Windows amd64，原因见：[X86 OS support requested](https://github.com/lltcggie/waifu2x-caffe/issues/49)
