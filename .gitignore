@@ -3,6 +3,8 @@
 *target
 *target/*
 *waifu*
+tilesetCore/tilesetCore
+tilesetCore/tilesetCore.exe
 
 *.slo
 *.lo
