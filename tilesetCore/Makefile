@@ -3,18 +3,21 @@ TARGET_DIR = target
 # Build
 all:debug
 
+run:debug
+	./$(TARGET_DIR)/tilesetCore_debug
+
 debug:
 	@if [ ! -d "$(TARGET_DIR)" ] ; then \
 	mkdir $(TARGET_DIR); \
 	fi
-	go build -o $(TARGET_DIR)/tileset_$@
+	go build -o $(TARGET_DIR)/tilesetCore_$@
 
 # Build with flags "-w -s"
 release:
 	@if [ ! -d "$(TARGET_DIR)" ] ; then \
 	mkdir $(TARGET_DIR); \
 	fi
-	go build -ldflags "-w -s" -o $(TARGET_DIR)/tileset
+	go build -ldflags "-w -s" -o $(TARGET_DIR)/tilesetCore
 
 test:
 	go test
@@ -27,5 +30,5 @@ clean:
 
 # Add svn ignore
 svn:
-  chmod +x svn_init.sh
-  ./svn_init.sh
+	chmod +x svn_init.sh
+	./svn_init.sh
